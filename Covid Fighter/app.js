@@ -116,6 +116,10 @@ function gameLoop() {
   e2.move()
   e3.move()
   player.move()
+  drawBox(player)
+  drawBox(e1)
+  drawBox(e2)
+  drawBox(e3)
 
   if (isCollided(e1, player) || isCollided(e2, player) || isCollided(e3, player)) {
     gameOn = false  
@@ -123,10 +127,7 @@ function gameLoop() {
     window.alert('Game Over')
   }
 
-  drawBox(player)
-  drawBox(e1)
-  drawBox(e2)
-  drawBox(e3)
+  
   if(player.x>500){
       gameOn=false;
       clearInterval(t);
