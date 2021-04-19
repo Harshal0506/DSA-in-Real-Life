@@ -35,6 +35,7 @@ function preload(){
     this.load.image('apple', 'Assets/apple.png');
     this.load.image('ray', 'Assets/ray.png');
     this.load.spritesheet('fullscreen', 'Assets/fullscreen.png', { frameWidth: 64, frameHeight: 64 });
+    this.load.image('tree','Assets/tree.png');
 }
 
 function create(){
@@ -44,18 +45,25 @@ function create(){
 
     this.score = 0;
     this.scoreText = this.add.text(W-700, 100, 'score: 0', { fontSize: '20px', fill: '#000' });
-    this.scoreText.depth=10;
+    this.scoreText.depth=11;
     this.scoreText.setScrollFactor(0);
     console.log('create');
     
     let ground=this.add.tileSprite(0,H-128,W,128,'ground');
     ground.setOrigin(0,0);
-    ground.depth=1;
+    ground.depth=2;
     let background=this.add.sprite(0,0,'background');
     background.setOrigin(0,0);
     background.displayWidth = W;
     background.displayHeight = H-128;
-    background.depth=0;
+    
+
+
+    let tree=this.add.sprite(W-140,H-110,'tree');
+    tree.setScale(0.5);
+    tree.setOrigin(0.5,1);
+    tree.alpha=0.8;
+    tree.setDepth(1);
 
     platforms = this.physics.add.staticGroup();
 
@@ -104,6 +112,7 @@ function create(){
 
 
     player=this.physics.add.sprite(100,100,'dude',4);
+    player.setDepth(11);
     console.log(ground);
     this.physics.add.existing(ground);
     ground.body.immovable=true;
